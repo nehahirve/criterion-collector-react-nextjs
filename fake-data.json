@@ -1,0 +1,82 @@
+[
+  {
+    "spine": 1,
+    "title": "Grand Illusion",
+    "director": "Jean Renoir",
+    "country": "France",
+    "year": 1937,
+    "coverUrl": "https://s3.amazonaws.com/criterion-production/films/b41a9467bc7a3534c01ba037c019005c/L5fZBJQOnY606k47INf8z9f5ecBFn3_small.jpg"
+  },
+  {
+    "spine": 2,
+    "title": "Seven Samurai",
+    "director": "Akira Kurosawa",
+    "year": 1954,
+    "country": "Japan",
+    "coverUrl": "https://s3.amazonaws.com/criterion-production/films/5af42201428bc14061890e527459f9b3/5p0q5rUeJNtfNhq2clz4MoYx7nkIO4_small.jpg"
+  },
+  {
+    "spine": 3,
+    "title": "The Lady Vanishes",
+    "director": "Alfred Hitchcock",
+    "year": 1938,
+    "country": "United Kingdom",
+    "coverUrl": "https://s3.amazonaws.com/criterion-production/films/2fed34c1c6f7f467f24763b2185827dc/723P9Fd9nV3vxwIe1xQFQyoJioZZG8_small.jpg"
+  },
+  {
+    "spine": 4,
+    "title": "Amarcord",
+    "director": "Federico Fellini",
+    "year": 1973,
+    "country": "France",
+    "coverUrl": "https://s3.amazonaws.com/criterion-production/films/b41a9467bc7a3534c01ba037c019005c/L5fZBJQOnY606k47INf8z9f5ecBFn3_small.jpg"
+  },
+  {
+    "spine": 5,
+    "title": "The 400 Blows",
+    "director": "François Truffaut",
+    "year": 1959,
+    "country": "France",
+    "coverUrl": "https://s3.amazonaws.com/criterion-production/films/b41a9467bc7a3534c01ba037c019005c/L5fZBJQOnY606k47INf8z9f5ecBFn3_small.jpg"
+  },
+  {
+    "spine": 6,
+    "title": "Beauty and the Beast",
+    "director": "Jean Cocteau",
+    "year": 1946,
+    "country": "France",
+    "coverUrl": "https://s3.amazonaws.com/criterion-production/films/b41a9467bc7a3534c01ba037c019005c/L5fZBJQOnY606k47INf8z9f5ecBFn3_small.jpg"
+  },
+  {
+    "spine": 7,
+    "title": "A Night To Remember",
+    "director": "Roy Ward Baker",
+    "year": 1958,
+    "country": "United Kingdom",
+    "coverUrl": "https://s3.amazonaws.com/criterion-production/films/b41a9467bc7a3534c01ba037c019005c/L5fZBJQOnY606k47INf8z9f5ecBFn3_small.jpg"
+  },
+  {
+    "spine": 8,
+    "title": "The Killer",
+    "director": "John Woo",
+    "year": 1989,
+    "country": "Hong Kong",
+    "coverUrl": "https://s3.amazonaws.com/criterion-production/films/b41a9467bc7a3534c01ba037c019005c/L5fZBJQOnY606k47INf8z9f5ecBFn3_small.jpg"
+  },
+  {
+    "spine": 9,
+    "title": "Hard Boiled",
+    "director": "Joh Woo",
+    "year": 1992,
+    "country": "Hong Kong",
+    "coverUrl": "https://s3.amazonaws.com/criterion-production/films/b41a9467bc7a3534c01ba037c019005c/L5fZBJQOnY606k47INf8z9f5ecBFn3_small.jpg"
+  },
+  {
+    "spine": 10,
+    "title": "Walkabout",
+    "director": "Nicolas Roeg",
+    "year": 1971,
+    "country": "United Kingdom",
+    "coverUrl": "https://s3.amazonaws.com/criterion-production/films/b41a9467bc7a3534c01ba037c019005c/L5fZBJQOnY606k47INf8z9f5ecBFn3_small.jpg"
+  }
+]
