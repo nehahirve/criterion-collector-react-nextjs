@@ -1,13 +1,11 @@
 import styles from '../styles/FilmGrid.module.scss'
-import Image from 'next/image'
+import Film from './Film'
 
 const FilmGrid = ({ films }) => {
   return (
     <ul className={styles.grid}>
       {films.map(film => (
-        <li style={{ display: 'flex' }}>
-          <Image src={film.coverUrl} width={400} height={500} />
-        </li>
+        <Film key={film.id} film={film} />
       ))}
     </ul>
   )

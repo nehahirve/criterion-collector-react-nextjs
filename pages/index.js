@@ -1,7 +1,7 @@
 import Head from 'next/head'
 
 import Header from '../components/Header'
-import FilmGrid from '../components/FilmGrid'
+import FilmGrid from '../components/FilmGrid.js'
 
 import styles from '../styles/Home.module.scss'
 const films = require('../fake-data.json')
@@ -13,9 +13,9 @@ export default function Home() {
         <title>Criterion Collector</title>
       </Head>
       <Header />
-      <div className={styles.container}>
+      <main className={styles.container}>
         <FilmGrid films={films} />
-      </div>
+      </main>
     </>
   )
 }
