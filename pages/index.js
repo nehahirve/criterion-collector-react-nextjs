@@ -2,6 +2,7 @@ import Head from 'next/head'
 
 import Header from '../components/Header'
 import FilmGrid from '../components/FilmGrid.js'
+import FilmDashboard from '../components/FilmDashboard.js'
 
 import styles from '../styles/Home.module.scss'
 const films = require('../fake-data.json')
@@ -14,7 +15,7 @@ export default function Home() {
       </Head>
       <Header />
       <main className={styles.container}>
-        <FilmGrid films={films} />
+        <FilmDashboard films={films} />
       </main>
     </>
   )
