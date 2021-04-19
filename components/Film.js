@@ -1,19 +1,11 @@
 import { useState } from 'react'
 import Image from 'next/image'
 
-import FilmModal from './FilmModal'
-import HoverButton from './HoverButton'
-
 import styles from '../styles/Film.module.scss'
 
 const Film = ({ film, toggleActiveFilm }) => {
   const [seen, setSeen] = useState(false)
   const [hovered, setHovered] = useState(false)
-
-  const toggleSeen = e => {
-    setSeen(!seen)
-    e.stopPropagation()
-  }
 
   return (
     <li
@@ -22,24 +14,25 @@ const Film = ({ film, toggleActiveFilm }) => {
       onMouseLeave={() => setHovered(false)}
     >
       {hovered && (
-        <HoverButton toggleActiveFilm={toggleActiveFilm} film={film} />
+        <button
+          className={styles.hoverButton}
+          onClick={_ => toggleActiveFilm(_, film)}
+        >
+          +
+        </button>
       )}
       <Image
         src={film.coverUrl}
         width={400}
         height={500}
         className={seen ? styles.seen : styles.unseen}
-        onClick={e => {
-          toggleSeen(e)
-        }}
+        onClick={() => setSeen(!seen)}
       />
 
       {!seen && (
         <p
           style={{ backgroundImage: `url(${film.coverUrl})` }}
-          onClick={e => {
-            toggleSeen(e)
-          }}
+          onClick={() => setSeen(!seen)}
         >
           {film.spine}
         </p>

@@ -3,13 +3,9 @@ import FilmGrid from './FilmGrid'
 import FilmModal from './FilmModal'
 
 const FilmDashboard = ({ films }) => {
-  const [activeFilm, setActiveFilm] = useState(true)
+  const [activeFilm, setActiveFilm] = useState(false)
 
-  const toggleActiveFilm = (_, film = false) => {
-    console.log(film)
-    setActiveFilm(film)
-    console.log(activeFilm)
-  }
+  const toggleActiveFilm = (_, film = false) => setActiveFilm(film)
 
   return (
     <>
