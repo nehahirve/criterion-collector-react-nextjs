@@ -6,7 +6,7 @@ import Film from '../models/Film';
 
 //connect to database
 mongoose
-  .connect(process.env.MONGODB, {
+  .connect(process.env.MONGODB_URI, {
     useUnifiedTopology: true,
     useNewUrlParser: true
   })

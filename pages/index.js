@@ -1,48 +1,55 @@
-import Head from 'next/head';
-import Header from '../components/Header';
-import FilmDashboard from '../components/FilmDashboard.js';
-import dbConnect from '../utils/dbConnect';
-import Film from '../models/Film';
-import { getSession, signOut } from 'next-auth/client';
+import Head from 'next/head'
+import Header from '../components/Header'
+import FilmDashboard from '../components/FilmDashboard.js'
+import dbConnect from '../utils/dbConnect'
+import Film from '../models/Film'
+import User from '../models/User'
+import { getSession, signOut } from 'next-auth/client'
 
-import styles from '../styles/Home.module.scss';
-// const films = require('../fake-data.json');
+import styles from '../styles/Home.module.scss'
 
-export default function UserPage({ films, session }) {
-  console.log(films);
+export default function UserPage({ films }) {
   return (
     <>
       <Head>
         <title>Criterion Collector</title>
       </Head>
       <Header />
-      {session && <button onClick={() => signOut()}>log out</button>}
+      <button onClick={() => signOut()}>log out</button>
       <main className={styles.container}>
         <FilmDashboard films={films} />
       </main>
     </>
-  );
+  )
 }
 
 export async function getServerSideProps(context) {
-  const session = await getSession({ req: context.req });
+  const session = await getSession({ req: context.req })
   if (!session) {
     return {
       redirect: {
         permanent: false,
         destination: '/auth'
       }
-    };
+    }
   }
-  await dbConnect();
+  await dbConnect()
 
   /* find all the data in our database */
-  const result = await Film.find({});
+  const result = await Film.find({})
   const films = result.map(doc => {
-    const film = doc.toObject();
-    film._id = film._id.toString();
-    return film;
-  });
+    const film = doc.toObject()
+    film._id = film._id.toString()
+    return film
+  })
 
-  return { props: { films, session } };
+  let user = await User.findOne({ email: session.user.email })
+  user = user.toObject()
+  user._id = user._id.toString()
+  user.filmsSeen = user.filmsSeen.map(film => {
+    return Object.assign({}, film, { _id: film._id.toString() })
+  })
+  console.log(user)
+
+  return { props: { films, user } }
 }

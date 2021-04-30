@@ -1,34 +1,31 @@
-import Head from 'next/head';
-import { signIn, signOut, useSession } from 'next-auth/client';
-import { useState } from 'react';
+import Head from 'next/head'
+import { signIn, signOut, useSession } from 'next-auth/client'
+import { useState } from 'react'
 
-import styles from '../styles/Home.module.scss';
+import styles from '../styles/Home.module.scss'
 // const films = require('../fake-data.json');
 
 export default function HomePage() {
-  const [loginMode, setLoginMode] = useState(false);
+  const [loginMode, setLoginMode] = useState(false)
   const signup = async e => {
-    e.preventDefault();
-    const data = new FormData(e.target);
-    const obj = {};
-    data.forEach((value, name) => (obj[name] = value));
+    e.preventDefault()
+    const data = new FormData(e.target)
+    const obj = {}
+    data.forEach((value, name) => (obj[name] = value))
     if (!loginMode) {
-      console.log('DONE');
-      e.stopPropagation();
+      e.stopPropagation()
       const result = await fetch('/api/auth/signup', {
         body: JSON.stringify(obj),
         method: 'POST'
-      });
-      console.log(result);
+      })
     } else {
-      e.stopPropagation();
+      e.stopPropagation()
       const result = await signIn('credentials', {
         ...obj,
         callbackUrl: '/'
-      });
-      console.log(result);
+      })
     }
-  };
+  }
 
   return (
     <>
@@ -44,5 +41,5 @@ export default function HomePage() {
         </form>
       </main>
     </>
-  );
+  )
 }
