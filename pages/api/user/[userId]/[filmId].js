@@ -1,6 +1,7 @@
 import dbConnect from '../../../../utils/dbConnect'
 import User from '../../../../models/User'
 import { getSession } from 'next-auth/client'
+import { loadGetInitialProps } from 'next/dist/next-server/lib/utils'
 
 const handler = async (req, res) => {
   if (req.method !== 'PUT') {
@@ -28,22 +29,18 @@ const handler = async (req, res) => {
         })
       } else {
         userDoc.filmsSeen.forEach(film => {
-          if (film._id === filmId) {
+          if (film.id === filmId) {
             film.seen = seen
             film.notes = ''
           }
         })
       }
-      return userDoc.save()
+      userDoc.save()
+      return res.status(201).json({ message: 'resource updated successfully' })
     })
-    // let user = userDoc.toObject()
-
-    // User.save(user)
   } catch (err) {
-    console.log('error is ' + err)
+    throw new Error(err)
   }
-
-  return res.status(201).json({ message: 'resource updated successfully' })
 }
 
 export default handler
