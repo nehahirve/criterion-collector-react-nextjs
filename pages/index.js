@@ -57,8 +57,8 @@ export async function getServerSideProps(context) {
       const userFilm = user.filmsSeen.find(x => x.id === film._id)
       console.log(userFilm)
       return Object.assign({}, film, {
-        notes: userFilm.notes,
-        seen: userFilm.seen
+        notes: userFilm.notes || '',
+        seen: userFilm.seen || false
       })
     } else return film
   })
