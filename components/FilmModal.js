@@ -5,10 +5,13 @@ const FilmModal = props => {
     <div className={styles.window}>
       <div className={styles.modal}>
         {JSON.stringify(props.activeFilm)}
-        <button
-          className={styles.close}
-          onClick={props.toggleActiveFilm}
-        ></button>
+        <button className={styles.close} onClick={props.toggleActiveFilm}>
+          X
+        </button>
+        <form action=''>
+          <textarea name='notes' id='' cols='30' rows='10'></textarea>
+          <button>SAVE</button>
+        </form>
       </div>
     </div>
   )

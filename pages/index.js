@@ -37,7 +37,7 @@ export async function getServerSideProps(context) {
 
   /* find all the data in our database */
   const result = await Film.find({})
-  const films = result.map(doc => {
+  let films = result.map(doc => {
     const film = doc.toObject()
     film._id = film._id.toString()
     return film
@@ -49,7 +49,19 @@ export async function getServerSideProps(context) {
   user.filmsSeen = user.filmsSeen.map(film => {
     return Object.assign({}, film, { _id: film._id.toString() })
   })
-  console.log(user)
+
+  const ids = user.filmsSeen.map(film => film.id)
+
+  films = films.map(film => {
+    if (ids.includes(film._id)) {
+      const userFilm = user.filmsSeen.find(x => x.id === film._id)
+      console.log(userFilm)
+      return Object.assign({}, film, {
+        notes: userFilm.notes,
+        seen: userFilm.seen
+      })
+    } else return film
+  })
 
   return { props: { films, user } }
 }

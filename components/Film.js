@@ -5,7 +5,8 @@ import UserContext from '../components/UserContext'
 import styles from '../styles/Film.module.scss'
 
 const Film = ({ film, toggleActiveFilm }) => {
-  const [seen, setSeen] = useState(null)
+  const [loaded, setLoaded] = useState(false)
+  const [seen, setSeen] = useState(film.seen)
   const [hovered, setHovered] = useState(false)
   const user = useContext(UserContext)
 
@@ -21,10 +22,14 @@ const Film = ({ film, toggleActiveFilm }) => {
   }
 
   useEffect(() => {
-    if (seen !== null) {
+    if (loaded) {
       update(seen)
     }
   }, [seen])
+
+  useEffect(() => {
+    setLoaded(true)
+  }, [])
 
   return (
     <li
