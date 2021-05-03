@@ -14,7 +14,7 @@ const handler = async (req, res) => {
   if (!session) return
 
   await dbConnect()
-  if (body.seen) {
+  if (body.seen === true || body.seen === false) {
     const { seen } = JSON.parse(req.body)
     try {
       User.findById(userId).then(userDoc => {
@@ -37,7 +37,7 @@ const handler = async (req, res) => {
         return res.status(201).json({ message: 'seen updated successfully' })
       })
     } catch (err) {
-      throw new Error(err)
+      return res.status(201).json({ message: err })
     }
   }
 
@@ -64,7 +64,7 @@ const handler = async (req, res) => {
         return res.status(201).json({ message: 'notes updated successfully' })
       })
     } catch (err) {
-      throw new Error(err)
+      return res.status(201).json({ message: err })
     }
   }
 }
