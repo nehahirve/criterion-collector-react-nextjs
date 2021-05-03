@@ -1,10 +1,17 @@
 const puppeteer = require('puppeteer')
+const mongoose = require('mongoose')
 
-import dbConnect from './dbConnect'
 import Film from '../models/Film'
 
+mongoose
+  .connect(process.env.MONGODB_URI, {
+    useUnifiedTopology: true,
+    useNewUrlParser: true
+  })
+  .then(() => console.log('Connected to database!'))
+  .catch(err => console.log(err))
+
 async function generateData() {
-  await dbConnect()
   const url = 'https://www.criterion.com/shop/browse/list?sort=spine_number'
   const browser = await puppeteer.launch()
   const page = await browser.newPage()

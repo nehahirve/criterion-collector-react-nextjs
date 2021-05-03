@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "scrape": "node utils/scraper.js"
+    "scrape": "echo 'scraper is not confifured'"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
