@@ -4,9 +4,10 @@ import FilmDashboard from '../components/FilmDashboard.js'
 import dbConnect from '../utils/dbConnect'
 import Film from '../models/Film'
 import User from '../models/User'
-import { getSession, signOut } from 'next-auth/client'
+import { getSession } from 'next-auth/client'
 
 import styles from '../styles/Home.module.scss'
+import addUserLayerToFilms from '../utils/userLayer'
 
 export default function UserPage({ films }) {
   return (
@@ -15,7 +16,6 @@ export default function UserPage({ films }) {
         <title>Criterion Collector</title>
       </Head>
       <Header />
-      <button onClick={() => signOut()}>log out</button>
       <main className={styles.container}>
         <FilmDashboard films={films} />
       </main>
@@ -50,18 +50,7 @@ export async function getServerSideProps(context) {
     return Object.assign({}, film, { _id: film._id.toString() })
   })
 
-  const ids = user.filmsSeen.map(film => film.id)
-
-  films = films.map(film => {
-    if (ids.includes(film._id)) {
-      const userFilm = user.filmsSeen.find(x => x.id === film._id)
-      console.log(userFilm)
-      return Object.assign({}, film, {
-        notes: userFilm.notes || '',
-        seen: userFilm.seen || false
-      })
-    } else return film
-  })
+  films = addUserLayerToFilms(films, user)
 
   return { props: { films, user } }
 }

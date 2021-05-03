@@ -4,9 +4,26 @@
   font-style: bold;
 }
 @font-face {
+  font-family: 'GTSuperDisplay Light';
+  src: url('/fonts/GTSuperDisplay/GT-Super-Display-Light.ttf');
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'GTSuperDisplay Italic';
+  src: url('/fonts/GTSuperDisplay/GT-Super-Display-Light-Italic.ttf');
+  font-style: italic;
+}
+
+@font-face {
   font-family: 'Aeroport';
   src: url('/fonts/Aeroport/Aeroport-Bold.ttf');
   font-style: bold;
+}
+@font-face {
+  font-family: 'Aeroport Light';
+  src: url('/fonts/Aeroport/Aeroport-Light.ttf');
+  font-style: normal;
 }
 
 * {
@@ -29,8 +46,4 @@ a {
 ul,
 ol {
   list-style-type: none;
-}
-
-li {
-  border: 2px solid red;
 }

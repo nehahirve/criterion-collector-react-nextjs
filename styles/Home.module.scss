@@ -1,3 +1,85 @@
 .container {
   min-height: 95vh;
 }
+
+.auth {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  form {
+    width: 400px;
+    max-width: 100vw;
+    display: flex;
+    flex-direction: column;
+    input {
+      text-align: center;
+      border: 2px solid black;
+      border-radius: 10px;
+      box-shadow: -5px 5px rgba($color: #000000, $alpha: 0.3);
+      margin: 1rem;
+      padding: 1rem;
+      font-family: 'Aeroport';
+      &:focus {
+        background-color: none;
+      }
+    }
+  }
+}
+
+.buttonGroup {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  button {
+    box-shadow: -5px 5px rgba($color: #000000, $alpha: 0.3);
+    margin: 1rem;
+
+    background: none;
+    border: 2px solid black;
+    border-radius: 15px;
+    font-size: 1.4rem;
+    width: 35%;
+  }
+}
+
+.login {
+  padding: 0.4rem 1rem;
+  font-family: 'GTSuperDisplay';
+}
+.signup {
+  padding: 0;
+  font-size: 1rem;
+  font-family: 'Aeroport';
+}
+
+.aboutWrapper {
+  position: absolute;
+  width: 300px;
+  top: 10vh;
+  right: 10vw;
+  div {
+    width: 100%;
+    span {
+      font-size: 2.2rem;
+    }
+  }
+  p {
+    font-family: 'Aeroport Light';
+    a {
+      text-decoration: underline;
+    }
+  }
+}
+
+.about {
+  font-family: 'GTSuperDisplay Italic';
+}
+
+.website {
+  text-align: end;
+  position: relative;
+  top: -1rem;
+  font-family: 'GTSuperDisplay Light';
+}

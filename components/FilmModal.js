@@ -1,6 +1,15 @@
 import { useState, useContext } from 'react'
 import UserContext from '../components/UserContext'
-import styles from '../styles/FilmModal.module.scss'
+import styled from 'styled-components'
+
+import {
+  StyledModal,
+  StyledWindow,
+  StyledCloseButton,
+  StyledSaveButton,
+  StyledForm,
+  StyledHeader
+} from '../styles/film-modal-style'
 
 const FilmModal = ({ activeFilm, toggleActiveFilm }) => {
   const [notes, setNotes] = useState(activeFilm.notes || '')
@@ -21,24 +30,31 @@ const FilmModal = ({ activeFilm, toggleActiveFilm }) => {
   }
 
   return (
-    <div className={styles.window}>
-      <div className={styles.modal}>
-        <button className={styles.close} onClick={toggleActiveFilm}>
-          X
-        </button>
-        <form onSubmit={e => saveNotes(e)}>
+    <StyledWindow>
+      <StyledModal>
+        <StyledHeader>
+          <div className='info'>
+            <p>Title: {activeFilm.title}</p>
+            <p>Director: {activeFilm.director}</p>
+            <p>Country: {activeFilm.country}</p>
+            <p>Year: {activeFilm.year}</p>
+          </div>
+          <StyledCloseButton onClick={toggleActiveFilm}>X</StyledCloseButton>
+        </StyledHeader>
+        <StyledForm onSubmit={e => saveNotes(e)}>
           <textarea
             name='notes'
-            id=''
-            cols='30'
-            rows='10'
+            rows={15}
             onChange={e => setNotes(e.target.value)}
             value={notes}
           ></textarea>
-          <button>SAVE</button>
-        </form>
-      </div>
-    </div>
+          <div className='bottomBar'>
+            <StyledSaveButton>save</StyledSaveButton>
+            <a href={activeFilm.externalUrl}>View on the Criterion Website</a>
+          </div>
+        </StyledForm>
+      </StyledModal>
+    </StyledWindow>
   )
 }
 

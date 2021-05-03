@@ -6,7 +6,6 @@ const handler = async (req, res) => {
   if (req.method !== 'POST') {
     return
   }
-  console.log(req.body)
   const { email, password } = JSON.parse(req.body)
 
   if (!email || !password) {
