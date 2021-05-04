@@ -1,5 +1,7 @@
 import '../styles/globals.scss'
-import UserContext from '../components/UserContext'
+import { createContext } from 'react'
+
+const UserContext = createContext()
 
 function App({ Component, pageProps }) {
   return (

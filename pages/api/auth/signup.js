@@ -31,8 +31,7 @@ const handler = async (req, res) => {
 
     try {
       await user.save()
-      res.status(201).json({ message: 'successful signup' })
-      //   mongoose.connection.close();
+      res.status(201).json({ message: 'success' })
     } catch (err) {
       console.error(err)
     }

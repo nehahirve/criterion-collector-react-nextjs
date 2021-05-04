@@ -1,7 +1,6 @@
 import dbConnect from '../../../../utils/dbConnect'
 import User from '../../../../models/User'
 import { getSession } from 'next-auth/client'
-import { loadGetInitialProps } from 'next/dist/next-server/lib/utils'
 
 const handler = async (req, res) => {
   if (req.method !== 'PUT') {

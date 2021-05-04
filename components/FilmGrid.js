@@ -1,11 +1,9 @@
-import { useState } from 'react';
-import styles from '../styles/FilmGrid.module.scss';
-import Film from './Film';
+import Film from './Film'
 
 const FilmGrid = ({ films, toggleActiveFilm }) => {
   return (
     <>
-      <ul className={styles.grid}>
+      <ul>
         {films.map(film => (
           <Film
             key={film._id}
@@ -14,8 +12,14 @@ const FilmGrid = ({ films, toggleActiveFilm }) => {
           />
         ))}
       </ul>
+      <style jsx>{`
+        ul {
+          display: grid;
+          grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+        }
+      `}</style>
     </>
-  );
-};
+  )
+}
 
-export default FilmGrid;
+export default FilmGrid

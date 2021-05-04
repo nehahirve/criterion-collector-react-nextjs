@@ -1,6 +1,6 @@
 import { useState, useEffect, useContext } from 'react'
 import Image from 'next/image'
-import UserContext from '../components/UserContext'
+import UserContext from '../pages/_app'
 
 import styles from '../styles/Film.module.scss'
 

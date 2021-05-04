@@ -16,11 +16,11 @@ export default NextAuth({
         const { email } = credentials
         const user = await User.findOne({ email }).exec()
         if (!user) {
-          throw new Error('no user found')
+          throw new Error('No such user found')
         }
 
         const isValid = await verify(credentials.password, user.password)
-        if (!isValid) throw new Error('password doesnt match')
+        if (!isValid) throw new Error('Your password is wrong')
         return {
           email: user.email
         }

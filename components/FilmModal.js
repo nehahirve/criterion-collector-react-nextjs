@@ -1,6 +1,5 @@
 import { useState, useContext } from 'react'
-import UserContext from '../components/UserContext'
-import styled from 'styled-components'
+import UserContext from '../pages/_app'
 
 import {
   StyledModal,
@@ -17,14 +16,13 @@ const FilmModal = ({ activeFilm, toggleActiveFilm }) => {
 
   const saveNotes = async e => {
     e.preventDefault()
-    const result = await fetch(`/api/user/${user._id}/${activeFilm._id}`, {
+    await fetch(`/api/user/${user._id}/${activeFilm._id}`, {
       method: 'PUT',
       body: JSON.stringify({
         filmId: activeFilm._id,
         notes
       })
-    }).then(res => res.json())
-    console.log(result)
+    })
     activeFilm.notes = notes
     toggleActiveFilm()
   }

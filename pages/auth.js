@@ -1,30 +1,38 @@
-import Head from 'next/head'
-import { signIn, signOut, useSession } from 'next-auth/client'
 import { useState } from 'react'
+import { signIn } from 'next-auth/client'
+import Head from 'next/head'
 
 import styles from '../styles/Home.module.scss'
-// const films = require('../fake-data.json');
 
-export default function HomePage() {
+export default function AuthPage() {
   const [loginMode, setLoginMode] = useState(false)
-  const signup = async e => {
+  const [error, setError] = useState(null)
+
+  const handleSubmit = e => {
     e.preventDefault()
-    const data = new FormData(e.target)
-    const obj = {}
-    data.forEach((value, name) => (obj[name] = value))
-    if (!loginMode) {
-      e.stopPropagation()
-      const result = await fetch('/api/auth/signup', {
-        body: JSON.stringify(obj),
-        method: 'POST'
-      })
+    e.stopPropagation()
+    const data = {}
+    new FormData(e.target).forEach((value, name) => (data[name] = value))
+    loginMode ? login(data) : signup(data)
+  }
+
+  const signup = async data => {
+    const res = await fetch('/api/auth/signup', {
+      body: JSON.stringify(data),
+      method: 'POST'
+    })
+    if (res.status === 201) {
+      await login(data)
     } else {
-      e.stopPropagation()
-      const result = await signIn('credentials', {
-        ...obj,
-        callbackUrl: '/'
-      })
+      await res.json().then(res => setError(res.message))
     }
+  }
+
+  const login = async data => {
+    await signIn('credentials', {
+      ...data,
+      callbackUrl: '/'
+    })
   }
 
   return (
@@ -49,9 +57,19 @@ export default function HomePage() {
             </a>
           </p>
         </div>
-        <form onSubmit={e => signup(e)}>
-          <input type='email' name='email' required={true} />
-          <input type='text' name='password' required={true} />
+        <form onSubmit={e => handleSubmit(e)}>
+          <input
+            type='email'
+            name='email'
+            required={true}
+            placeholder='email'
+          />
+          <input
+            type='text'
+            name='password'
+            required={true}
+            placeholder='password'
+          />
           <div className={styles.buttonGroup}>
             <button
               className={styles.signup}
@@ -63,6 +81,7 @@ export default function HomePage() {
               log in
             </button>
           </div>
+          {error && <div className={styles.error}>{error}</div>}
         </form>
       </main>
     </>

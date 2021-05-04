@@ -1,15 +1,15 @@
 import Head from 'next/head'
+import { getSession } from 'next-auth/client'
+
 import Header from '../components/Header'
 import FilmDashboard from '../components/FilmDashboard.js'
 import dbConnect from '../utils/dbConnect'
 import Film from '../models/Film'
 import User from '../models/User'
-import { getSession } from 'next-auth/client'
-
 import styles from '../styles/Home.module.scss'
 import addUserLayerToFilms from '../utils/userLayer'
 
-export default function UserPage({ films }) {
+export default function HomePage({ films }) {
   return (
     <>
       <Head>

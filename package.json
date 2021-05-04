@@ -1,12 +1,12 @@
 {
-  "name": "next-practice",
+  "name": "criterion-collector",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "scrape": "echo 'scraper is not confifured'"
+    "scrape": "echo 'scraper is not configured'"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
@@ -20,6 +20,8 @@
     "swr": "^0.5.5"
   },
   "devDependencies": {
-    "sass": "^1.32.8"
+    "node-sass": "^5.0.0",
+    "sass": "^1.32.8",
+    "styled-jsx-plugin-sass": "^1.0.0"
   }
 }

@@ -51,14 +51,10 @@ export const StyledForm = styled.form`
     width: 100%;
     justify-content: space-between;
     align-items: baseline;
-    a {
-      text-decoration: underline;
-    }
   }
 `
 
 export const StyledCloseButton = styled.button`
-  border: 2px solid black;
   border-radius: 20%;
   background: magenta;
   width: 2rem;
@@ -68,7 +64,6 @@ export const StyledCloseButton = styled.button`
 `
 
 export const StyledSaveButton = styled.button`
-  border: 2px solid black;
   box-shadow: -5px 5px rgba($color: #000000, $alpha: 0.3);
   background: magenta;
   border-radius: 10px;
